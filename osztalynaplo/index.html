@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osztalynaplo</title>
+</head>
+<body>
+    
+    <!-- alkalmazás -->
+    <main id="app">
+        <h1>{{ pageTitle }}</h1>
+
+         <!-- diáklista -->
+            <ul>
+                <li  v-for="student in studentCollection"> 
+                <span v-bind:style="GetColor(student)">
+                    {{ student.name }}
+                </span> 
+                ---
+                <span v-show="student.gender == 'fiú'">
+                    Labdát kap majd gyereknapra</span>
+
+                <span v-show="student.gender == 'lány'"> 
+                    Virágot kap majd nőnapon</span>
+
+                </li>            
+            </ul>
+
+        <!-- diák hozzáadása -->
+
+        <input type="text" v-model="newStudent.name" 
+            @keydown.enter="AddNewStudent()"> <br>
+
+
+        <label>
+            lány
+            <input type="radio" name="gender" v-model='newStudent.gender' value="lány">  
+        </label>       
+        
+
+        <br>
+
+        <label>
+            fiú
+            <input type="radio" name="gender" v-model='newStudent.gender' value="fiú">  
+        </label>    
+        
+        <br>
+        Érték: {{ newStudent.gender }}
+        <br>
+
+        <button @click="AddNewStudent()">Hozzáadás</button>
+        
+    </main>
+
+
+
+
+    
+
+    <!-- vendor JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+    <!-- APP JS -->
+    <script defer src="scripts.js"></script>   
+</body>
+</html>
