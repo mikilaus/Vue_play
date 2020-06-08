@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kereső</title>
+</head>
+
+<body>
+    
+
+    <!-- oldalcím -->
+    <h1>Kereső</h1>
+
+    <!-- alkalmazás -->
+    <main id="app">
+
+        <!-- filterek -->        
+            <input type="text" v-model = "nameFilter">   
+            {{ nameFilter }} 
+
+        <!-- találatok -->
+
+        <ol>
+            <li v-for = "film in GetFilteredList()">
+                {{ film }}
+            </li>
+
+        </ol>
+
+    </main>
+
+   <!-- Vendor JS -->
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- app JS -->
+   <!--  <script src="scripts.js"></script> -->
+    <script defer src="scripts-vue.js"></script>
+
+</body>
+
+</html>
+
