@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kosár</title>
+</head>
+
+<body>
+
+    <!-- oldalcím -->
+    <h1>Kosár</h1>
+
+    <!-- Alkalmazás -->   
+    <main id="app">
+
+        <!-- hozzáadás -->
+        <div>
+            <input type="text" placeholder="Termék neve" v-model = "newItem.name" @keydown.enter="AddNewItem()">
+        </div>
+        <div>
+            <input type="number" placeholder="Darabszám" v-model = "newItem.count" @keydown.enter="AddNewItem()">
+            <span> db </span>
+        </div>
+        <div>
+            <input type="number" placeholder="Egységár" v-model = "newItem.basePrice" @keydown.enter="AddNewItem()">
+            <span> Ft </span>
+        </div>
+        <div>
+            <button @click="AddNewItem()">Hozzáadás</button>
+        </div>
+
+
+        <!-- lista -->
+        <ul>
+            <li v-for = "item in itemCollection">
+                {{ item.name }}
+                <ul>                    
+                    <li>darabszám: {{ item.count }} db</li>
+                    <li>egységár: {{ item.basePrice }} Ft</li>
+                    <li>Összesen: {{ item.getTotalPrice() }} Ft</li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Összegzés -->
+        <span> Összegzés: {{ getTotal() }} Ft</span>
+
+
+    </main>
+
+    
+
+    <!-- vendor js -->    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">
+    </script>
+
+    <!-- app JS -->
+    <!-- <script src="scripts.js"></script> -->
+    <script src="src/CartItem.js"></script>
+    <script defer src="scripts-vue.js"></script>
+</body>
+
+</html>
